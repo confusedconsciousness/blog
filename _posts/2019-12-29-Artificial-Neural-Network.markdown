@@ -95,7 +95,7 @@ Let’s see how will we work out when we have three layers.<br>
 </center>
 Well we knew the error produced in the output because we had the correct label for each output node and we only need to find the squared sum of the errors. But <b>how will we find the error in the hidden layer?</b> Because clearly we do not have any explicit data that present in the training other than the labels. So the question is can we get the error produced by the hidden layer in some other way?
 <center>
-<img src="{{site.baseurl}}/assets/image/error2.jpg" width="70%" height="70%">
+<img src="{{site.baseurl}}/assets/images/error2.jpg" width="70%" height="70%">
 </center>
 Error produced by the hidden layer can be indirectly computed via the error produced by the subsequent layers. Say we have a three layer network and we know the error produced at the output layer let’s call it eoutput,1 and eoutput,2. We can take use of these errors to compute the error produced by the hidden layers. It is similar to blaming the weights for the error they produced.<br>
 Let’s look at the hidden layer node 1, the error produced by that node must have propagated through the two links via w1,1 and w1,2.<br>
