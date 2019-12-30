@@ -7,7 +7,7 @@ Before moving on directly to the explanation of what a neural network is we shou
 Decision trees are set of if’s and else's, they struggle to find some easy non linear dependencies for e.g. xor. Though we’ve gone through how we can transform a decision tree to incorporate the continuous features but they seem not to work very well because they were designed to work best for the discrete values. ANNs are something that tries to resolve the problem with the decision tree i guess.
 Why do we call it Neural Network?
 Well there's a history behind why it is called so and we don’t want to go in detail. The structure of an ANN resembles connection in the human brain. We have approximately billion of neurons that are interconnected to each other that helps us in deciding some of the complex tasks for e.g. running, making decisions, driving a car, recognizing faces, etc. 
-![Neural Network](/assets/images/ann.jpg)
+<img src="{{site.baseurl}}/assets/image/ann.jpg">
 Each circle represented in the above figure is called a node (neuron) which is connected to each and every node present in the previous and the next layer thus forming a dense connection.<br>
 Layers can be divided into three parts:<br>
 <ul>
@@ -21,6 +21,7 @@ Output layer is the last layer in the neural network and its task is to give som
 Hidden layer got their names because whatever they output is not meaningful to us but is meaningful to the layers subsequent to it. So any representation that they have learnt is hidden from us or is so complex that it makes no sense to us, that’s why hidden layer.<br>
 
 # Biological Neuron
+<img src="{{site.baseurl}}/assets/image/biological_neuron.jpg">
 <b>How does a biological neuron process information?</b>
 It gets the stimulus from other neurons via dendrites, all the stimulus (x1, x2, …. xn) are then summed over and checked whether it crosses a certain threshold. If yes then that particular neuron fires. When it fires it tells other neurons connected to it that hey I think I’ve got some useful information that you might find helpful.
 The above figure represents a single node (neuron). The whole process can be divided into two parts. The first part is the accumulation of the weighted signals. Weights let us know about how important the signal is, they might amplify or deamplify it. The net is computed by summing all the weighted signal. The second part is to pass this net to an activation function which tells us whether the given net is useful or not. Say we passed our net = 5 to a step function whose threshold is 0. Thus after passing it to the step activation function our output will be 1. If net is -5 then output will be -1.
@@ -54,7 +55,7 @@ Let me give you an example
 σ(20) = 0.99999999793<br>
 σ(25) = 0.99999999998<br>
 As you can see even though our net varies from 5 to 25 the output it produces changes a little. Well we want if the net differs drastically so does the output then only our model will be able to distinguish. One way to deal with this kind of problem is to limit the net to be in the range of [-1, 1]
-![sigmoid](/assets/images/sigmoid.jpg)
+<img src="{{site.baseurl}}/assets/image/sigmoid.jpg">
 Because in that range we get a variety of output whereas in case our output is greater than 5 the output merely changes. This process is called normalising. Let’s see how our weight initialisation helps us in achieving this.<br>
 If we have 5 nodes in the previous layer the weights will be sampled from a uniform distribution from [-limit, limit] where limit is sqrt(6 / (5 + 1)) = 1
 Thus our weights will lie in range [-1, 1]. Say the weights are [0.1, -0.2, -0.8, 0.3, 0.3] and the output of the previous node be 0.5 so our summation will be -0.15.<br>
@@ -62,9 +63,9 @@ Thus our weights will lie in range [-1, 1]. Say the weights are [0.1, -0.2, -0.8
 In this case the limit will further shrink to accommodate the increase in number of previous layer nodes. Now the limit is [-0.244, 0.244].<br>
 Till this point we have randomly initialised the weights of our neural network. Now let’s talk about forward pass.<br>
 We’ll describe it via an example it will make the explanation much more simpler.<br>
-![two_layered_nn](/assets/images/two_layered.jpg)
+<img src="{{site.baseurl}}/assets/image/two_layered.jpg">
 Consider the above small neural network consisting of only two layers, there is no hidden layer. The first layer is termed as the input layer, no processing happens at this layer whatever is input is outputted the same. The node can be represented in the following way<br>
-![two_layered_nn](/assets/images/weights.jpg)
+<img src="{{site.baseurl}}/assets/image/weights.jpg">
 The left part is called an aggregator or summer as it performs the weighted summation over all the inputs. The right part task is to apply the transfer function to the weighted sum and hand over the output to the next layer nodes.<br>
 Let me first walk you through the notation wi,j represents the weight of the connection that connects the ith node to the jth node in the next layer.<br>
 <center>
