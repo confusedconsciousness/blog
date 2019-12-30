@@ -21,7 +21,7 @@ Output layer is the last layer in the neural network and its task is to give som
 Hidden layer got their names because whatever they output is not meaningful to us but is meaningful to the layers subsequent to it. So any representation that they have learnt is hidden from us or is so complex that it makes no sense to us, that’s why hidden layer.<br>
 
 # Biological Neuron
-<img src="{{site.baseurl}}/assets/image/biological_neuron.jpg">
+<img src="{{site.baseurl}}/assets/images/biological_neuron.jpg">
 <b>How does a biological neuron process information?</b>
 It gets the stimulus from other neurons via dendrites, all the stimulus (x1, x2, …. xn) are then summed over and checked whether it crosses a certain threshold. If yes then that particular neuron fires. When it fires it tells other neurons connected to it that hey I think I’ve got some useful information that you might find helpful.
 The above figure represents a single node (neuron). The whole process can be divided into two parts. The first part is the accumulation of the weighted signals. Weights let us know about how important the signal is, they might amplify or deamplify it. The net is computed by summing all the weighted signal. The second part is to pass this net to an activation function which tells us whether the given net is useful or not. Say we passed our net = 5 to a step function whose threshold is 0. Thus after passing it to the step activation function our output will be 1. If net is -5 then output will be -1.
