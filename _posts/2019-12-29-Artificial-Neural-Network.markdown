@@ -7,7 +7,7 @@ Before moving on directly to the explanation of what a neural network is we shou
 Decision trees are set of if’s and else's, they struggle to find some easy non linear dependencies for e.g. xor. Though we’ve gone through how we can transform a decision tree to incorporate the continuous features but they seem not to work very well because they were designed to work best for the discrete values. ANNs are something that tries to resolve the problem with the decision tree i guess.
 Why do we call it Neural Network?
 Well there's a history behind why it is called so and we don’t want to go in detail. The structure of an ANN resembles connection in the human brain. We have approximately billion of neurons that are interconnected to each other that helps us in deciding some of the complex tasks for e.g. running, making decisions, driving a car, recognizing faces, etc. 
-<img src="{{site.baseurl}}/assets/image/ann.jpg">
+<img src="{{site.baseurl}}/assets/images/ann.jpg">
 Each circle represented in the above figure is called a node (neuron) which is connected to each and every node present in the previous and the next layer thus forming a dense connection.<br>
 Layers can be divided into three parts:<br>
 <ul>
@@ -55,7 +55,7 @@ Let me give you an example
 σ(20) = 0.99999999793<br>
 σ(25) = 0.99999999998<br>
 As you can see even though our net varies from 5 to 25 the output it produces changes a little. Well we want if the net differs drastically so does the output then only our model will be able to distinguish. One way to deal with this kind of problem is to limit the net to be in the range of [-1, 1]
-<img src="{{site.baseurl}}/assets/image/sigmoid.jpg">
+<img src="{{site.baseurl}}/assets/images/sigmoid.jpg">
 Because in that range we get a variety of output whereas in case our output is greater than 5 the output merely changes. This process is called normalising. Let’s see how our weight initialisation helps us in achieving this.<br>
 If we have 5 nodes in the previous layer the weights will be sampled from a uniform distribution from [-limit, limit] where limit is sqrt(6 / (5 + 1)) = 1
 Thus our weights will lie in range [-1, 1]. Say the weights are [0.1, -0.2, -0.8, 0.3, 0.3] and the output of the previous node be 0.5 so our summation will be -0.15.<br>
@@ -63,9 +63,9 @@ Thus our weights will lie in range [-1, 1]. Say the weights are [0.1, -0.2, -0.8
 In this case the limit will further shrink to accommodate the increase in number of previous layer nodes. Now the limit is [-0.244, 0.244].<br>
 Till this point we have randomly initialised the weights of our neural network. Now let’s talk about forward pass.<br>
 We’ll describe it via an example it will make the explanation much more simpler.<br>
-<img src="{{site.baseurl}}/assets/image/two_layered.jpg">
+<img src="{{site.baseurl}}/assets/images/two_layered.jpg">
 Consider the above small neural network consisting of only two layers, there is no hidden layer. The first layer is termed as the input layer, no processing happens at this layer whatever is input is outputted the same. The node can be represented in the following way<br>
-<img src="{{site.baseurl}}/assets/image/weights.jpg">
+<img src="{{site.baseurl}}/assets/images/weights.jpg">
 The left part is called an aggregator or summer as it performs the weighted summation over all the inputs. The right part task is to apply the transfer function to the weighted sum and hand over the output to the next layer nodes.<br>
 Let me first walk you through the notation wi,j represents the weight of the connection that connects the ith node to the jth node in the next layer.<br>
 <center>
@@ -79,12 +79,12 @@ outputs_2 = sigmoid(layer_2_net_2)
 Now what, after getting the outputs we need to check whether these outputs matches the desired outputs. If not by how much factor are we wrong? And how do we minimise these errors. <br>
 By what we have learnt above we can be sure that we need to tune the weights to reduce the errors. The question is how? One intuition can be we can blame the previous link for the errors that we got in the current layer but the question is how much should we blame the links? Should we blame equally? Or there has to be a some part?<br>
 Let’s discuss this idea a little bit more. Say in a firm a project failed to meet the requirement, it was known that the project was being led by two people well those two people will be more responsible than the rest of the members associated with the projects. The same analogy is applied here the connections having more weight are more responsible for the error produced.<br>
-![back_propagation](/assets/images/back_prop.jpg)
+<img src="{{site.baseurl}}/assets/image/back_prop.jpg">
 In the above figure it can be clearly seen that the w1,1 is more responsible for the error because it has greater weight than w2,1. Error responsible is computed by taking the weighted average. e1 = (w1,1 / (w1,1 + w2,1)) * output_error, similarly e2 = (w2,1 / (w1,1 + w2,1)) * output_error.<br>
 Let’s see how will we work out when we have three layers.<br>
-![back_propagation](/assets/images/error.jpg)
+<img src="{{site.baseurl}}/assets/image/error.jpg">
 Well we knew the error produced in the output because we had the correct label for each output node and we only need to find the squared sum of the errors. But <b>how will we find the error in the hidden layer?</b> Because clearly we do not have any explicit data that present in the training other than the labels. So the question is can we get the error produced by the hidden layer in some other way?
-![back_propagation](/assets/images/error2.jpg)
+<img src="{{site.baseurl}}/assets/image/error2.jpg">
 Error produced by the hidden layer can be indirectly computed via the error produced by the subsequent layers. Say we have a three layer network and we know the error produced at the output layer let’s call it eoutput,1 and eoutput,2. We can take use of these errors to compute the error produced by the hidden layers. It is similar to blaming the weights for the error they produced.<br>
 Let’s look at the hidden layer node 1, the error produced by that node must have propagated through the two links via w1,1 and w1,2.<br>
 How much of eoutput,1 and eoutput,2 is present in ehidden,1. This is a little tricky and can get a bit confusing the first time.<br>
@@ -96,5 +96,5 @@ Thus using the above analogy the error produced by the ehidden,1 is equal to the
 ehidden,1 = eoutput,1 * (w1,1 / (w1,1 + w2,3) ) + eoutput,2 * (w1,2 / (w1,1 + w2,3) )
 </center>
 You can refer to the figure 7.4 given below to get a better understanding of what is happening.
-![error_propagation](/assets/images/eprop.jpg)
+<img src="{{site.baseurl}}/assets/image/eprop.jpg">
 
