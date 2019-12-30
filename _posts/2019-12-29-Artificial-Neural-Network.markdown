@@ -2,6 +2,7 @@
 layout : post
 title : "Artificial Neural Network"
 date : 2019-12-29 08:43:55
+excerpt
 ---
 
 <ul>
