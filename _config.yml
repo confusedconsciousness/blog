@@ -21,7 +21,7 @@
 title: Chandravanshi
 email: kkumar@ee.iitr.ac.in
 description: >- # this means to ignore newlines until "baseurl:"
-  A Deep Learning blog. © All Rights Researved
+  A Deep Learning blog
 baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://confusedconsciousness.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: 
