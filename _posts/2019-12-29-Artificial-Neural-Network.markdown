@@ -157,7 +157,7 @@ In the end all we care about finding is
 
 That is how the error E changes when wj,k is tuned and we want to tune it in such a way that it actually minimises the E.
 <center>
-<img src="{{site.baseurl}}/assets/images/error3.jpg" height="50%" width="50%">
+<img src="{{site.baseurl}}/assets/images/error3.jpg" height="75%" width="75%">
 </center>
 
 Well first talk about what the actual error E is? E can be thought of as the sum of squared difference of the actual and the predicted output. We can write it in mathematical form as follows
@@ -177,7 +177,7 @@ It is clear that tk is a constant so it will be zero when we take the differenti
 
 We can also write the above equation as follows
 <center>
-<img src="{{site.baseurl}}/assets/images/eq5.jpg" width="50%" height="50%">
+<img src="{{site.baseurl}}/assets/images/eq5.jpg" width="70%" height="70%">
 </center>
 
 We’ve just dropped the constant 2. We’ve color coded certain things in the above equation, let's see what do these mean? The purple term actually represents the error corresponding to output layer, sometimes also referred as 𝛿 but as we have a more complex nodes, 𝛿 is (tk - ok) multiplied by a squashing function which is given in red. Now the question is how much does it needs to flow in order to update the weights is dependent on the subsequent terms. (Try to link the analogy that we’ve learnt in the above section that complete error is not used to update but a fraction of it). The red term is basically the differentiation of the output of the current node and the green term is the output of the previous layer node.<br>
@@ -193,7 +193,7 @@ oi = is the output of the ith node<br>
 Downstream = basically consists of all the links that are connected to the current node to all those nodes present in the next layer<br>
 η = is the learning rate<br>
 <center>
-<img src="{{site.baseurl}}/assets/images/eq6.jpg" width="70%" height="70%">
+<img src="{{site.baseurl}}/assets/images/eq6.jpg" width="50%" height="50%">
 </center>
 
 Initially we’ve a general term written in blue that we want in the end. We want to know how our error E changes w.r.t wi,j. One thing that we notice is that wi,j can affect the whole network via netj. Thus we’ve applied a chain rule to take that into incorporation. netj on the other hand depends on the wi,j through oi. <br>
