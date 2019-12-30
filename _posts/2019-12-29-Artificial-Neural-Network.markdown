@@ -7,7 +7,7 @@ Before moving on directly to the explanation of what a neural network is we shou
 Decision trees are set of if’s and else's, they struggle to find some easy non linear dependencies for e.g. xor. Though we’ve gone through how we can transform a decision tree to incorporate the continuous features but they seem not to work very well because they were designed to work best for the discrete values. ANNs are something that tries to resolve the problem with the decision tree i guess.
 Why do we call it Neural Network?
 Well there's a history behind why it is called so and we don’t want to go in detail. The structure of an ANN resembles connection in the human brain. We have approximately billion of neurons that are interconnected to each other that helps us in deciding some of the complex tasks for e.g. running, making decisions, driving a car, recognizing faces, etc. 
-<img src="{{site.baseurl}}/assets/images/ann.jpg">
+![Neural Network](/assets/images/ann.jpg)
 Each circle represented in the above figure is called a node (neuron) which is connected to each and every node present in the previous and the next layer thus forming a dense connection.<br>
 Layers can be divided into three parts:<br>
 <ul>
