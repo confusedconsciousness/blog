@@ -4,9 +4,8 @@ title : "Artificial Neural Network"
 date : 2019-12-29 08:43:55
 
 ---
-
-Before moving on directly to the explanation of what a neural network is we should consider why do we need it. We have learnt about the decision trees, there working principle and their advantages and disadvantages. 
-Decision trees are set of if’s and else's, they struggle to find some easy non linear dependencies for e.g. xor. Though we’ve gone through how we can transform a decision tree to incorporate the continuous features but they seem not to work very well because they were designed to work best for the discrete values. ANNs are something that tries to resolve the problem with the decision tree i guess.
+<!--excerpt.start-->Before moving on directly to the explanation of what a neural network is we should consider why do we need it. We have learnt about the decision trees, there working principle and their advantages and disadvantages. 
+Decision trees are set of if’s and else's, they struggle to find some easy non linear dependencies for e.g. xor. Though we’ve gone through how we can transform a decision tree to incorporate the continuous features but they seem not to work very well because they were designed to work best for the discrete values. ANNs are something that tries to resolve the problem with the decision tree i guess.<!--excerpt.end-->
 Why do we call it Neural Network?
 Well there's a history behind why it is called so and we don’t want to go in detail. The structure of an ANN resembles connection in the human brain. We have approximately billion of neurons that are interconnected to each other that helps us in deciding some of the complex tasks for e.g. running, making decisions, driving a car, recognizing faces, etc. 
 <img src="{{site.baseurl}}/assets/images/ann.jpg">
