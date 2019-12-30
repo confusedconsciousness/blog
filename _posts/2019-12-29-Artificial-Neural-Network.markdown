@@ -86,7 +86,7 @@ Now what, after getting the outputs we need to check whether these outputs match
 By what we have learnt above we can be sure that we need to tune the weights to reduce the errors. The question is how? One intuition can be we can blame the previous link for the errors that we got in the current layer but the question is how much should we blame the links? Should we blame equally? Or there has to be a some part?<br>
 Let’s discuss this idea a little bit more. Say in a firm a project failed to meet the requirement, it was known that the project was being led by two people well those two people will be more responsible than the rest of the members associated with the projects. The same analogy is applied here the connections having more weight are more responsible for the error produced.<br>
 <center>
-<img src="{{site.baseurl}}/assets/images/back_prop.jpg" width="70%" height="70%">
+<img src="{{site.baseurl}}/assets/images/back.jpg" width="70%" height="70%">
 </center>
 In the above figure it can be clearly seen that the w1,1 is more responsible for the error because it has greater weight than w2,1. Error responsible is computed by taking the weighted average. e1 = (w1,1 / (w1,1 + w2,1)) * output_error, similarly e2 = (w2,1 / (w1,1 + w2,1)) * output_error.<br>
 Let’s see how will we work out when we have three layers.<br>
