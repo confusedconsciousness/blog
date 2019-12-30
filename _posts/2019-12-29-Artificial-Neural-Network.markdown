@@ -96,5 +96,6 @@ Thus using the above analogy the error produced by the ehidden,1 is equal to the
 ehidden,1 = eoutput,1 * (w1,1 / (w1,1 + w2,3) ) + eoutput,2 * (w1,2 / (w1,1 + w2,3) )
 </center>
 You can refer to the figure 7.4 given below to get a better understanding of what is happening.
+<center>
 <img src="{{site.baseurl}}/assets/images/eprop.jpg" width="50%" height="50%">
-
+</center>
