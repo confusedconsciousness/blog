@@ -31,6 +31,14 @@
         <div class="trigger"><a class="page-link" href="/about/">About</a></div>
       </nav></div>
 </header>
+<ul>
+{% for post in site.posts %}
+<li>
+  <a href="{% post.permalink %}">{% post.title %}</a>
+  <p>{{ post.excerpt }}</p>
+</li>
+{% endfor %}
+</ul>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <div class="home">
