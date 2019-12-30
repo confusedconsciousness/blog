@@ -132,10 +132,14 @@ You can refer to the figure 7.4 given below to get a better understanding of wha
 
 This was all about which weight to blame more and which to blame less and how to compute the error for the hidden layer indirectly. The main question still remains unanswered that is how to actually update the weight so as to minimise the error.<br>
 As you might know that the error that is computed in the end is a function of weights present in the network. If we have only one weight then the plot of error w.r.t the weight might look something as given in the figure.
-<img src="/assets/images/gd.jpg" width="75%" height="75%">
+<center>
+<img src="{{site.baseurl}}/assets/images/gd.jpg" width="75%" height="75%">
+</center>
 
 If our error depends on two weights than the plot would look something as given in the following figure.
-<img src="/assets/images/gd2.jpg" width="75%" height="75%">
+<center>
+<img src="{{site.baseurl}}/assets/images/gd2.jpg" width="75%" height="75%">
+</center>
 
 Alright, a complex neural network has a way too complicated high dimensional error surface that we can’t visualise. Our intuition is to minimise these errors so we need to pick up the required weights to achieve that.
 Why not use brute force? That is to try each and every combination of the weights and look for the error surface whether it reaches the minimum or not. This sounds pretty intuitive to do but is highly computationally expensive and would take years to converge. So we have to come up for a better solution and that’s where mathematics comes to the rescue. We can use what is called <b>gradient descent</b> for our purpose.
@@ -147,23 +151,34 @@ Our current task is to find the weights (parameters) that minimises the error. T
 ### Training
 As you might have guessed our whole task is to tune the weights in such a way that minimises the error.
 In the end all we care about finding is
-<img src="/assets/images/eq1.jpg" width="50%" height="50%">
+<center>
+<img src="{{site.baseurl}}/assets/images/eq1.jpg" width="25%" height="25%">
+</center>
 
 That is how the error E changes when wj,k is tuned and we want to tune it in such a way that it actually minimises the E.
-<img src="/assets/images/error3.jpg" height="75%" width="75%">
+<center>
+<img src="{{site.baseurl}}/assets/images/error3.jpg" height="50%" width="50%">
+</center>
 
 Well first talk about what the actual error E is? E can be thought of as the sum of squared difference of the actual and the predicted output. We can write it in mathematical form as follows
-<img src="/assets/images/eq2.jpg" width="70%" height="70%">
+<center>
+<img src="{{site.baseurl}}/assets/images/eq2.jpg" width="50%" height="50%">
+</center>
 
 As there can be n outputs we have to take the summation over all of them. One thing we should notice here is that we are trying to differentiate the E w.r.t to wj,k where wj,k implies the link coming from jth node to the kth node. It is pretty clear the on not equal to j will not depend on the wj,k whatsoever. Thus all those terms where on not equal to j will get zero and we’ll only be left with the following equation.
-
-<img src="/assets/images/eq3.jpg" width="70%" height="70%">
+<center>
+<img src="{{site.baseurl}}/assets/images/eq3.jpg" width="50%" height="50%">
+</center>
 
 It is clear that tk is a constant so it will be zero when we take the differentiation inside. Ok depends on wj,k but the question is how? Ok can be written as sigmoid(netk) and netk can be written as Σj oj * wj,k  where oj  is the output of the previous layer. If we follow the chain rule we’ll get something as follows
-<img src="/assets/images/eq4.jpg" width="70%" height="70%">
+<center>
+<img src="{{site.baseurl}}/assets/images/eq4.jpg" width="50%" height="50%">
+</center>
 
 We can also write the above equation as follows
-<img src="/assets/images/eq5.jpg" width="70%" height="70%">
+<center>
+<img src="{{site.baseurl}}/assets/images/eq5.jpg" width="50%" height="50%">
+</center>
 
 We’ve just dropped the constant 2. We’ve color coded certain things in the above equation, let's see what do these mean? The purple term actually represents the error corresponding to output layer, sometimes also referred as 𝛿 but as we have a more complex nodes, 𝛿 is (tk - ok) multiplied by a squashing function which is given in red. Now the question is how much does it needs to flow in order to update the weights is dependent on the subsequent terms. (Try to link the analogy that we’ve learnt in the above section that complete error is not used to update but a fraction of it). The red term is basically the differentiation of the output of the current node and the green term is the output of the previous layer node.<br>
 <b>The whole purple and red term together is 𝛿.</b><br>
@@ -177,7 +192,9 @@ oi = is the output of the ith node<br>
 𝛿k = is basically an error term used for shortcut to represent some term<br>
 Downstream = basically consists of all the links that are connected to the current node to all those nodes present in the next layer<br>
 η = is the learning rate<br>
-<img src="/assets/images/eq6.jpg" width="70%" height="70%">
+<center>
+<img src="{{site.baseurl}}/assets/images/eq6.jpg" width="70%" height="70%">
+</center>
 
 Initially we’ve a general term written in blue that we want in the end. We want to know how our error E changes w.r.t wi,j. One thing that we notice is that wi,j can affect the whole network via netj. Thus we’ve applied a chain rule to take that into incorporation. netj on the other hand depends on the wi,j through oi. <br>
 Now we can divide the dependence of E on netj in two parts<br>
@@ -187,7 +204,9 @@ Now we can divide the dependence of E on netj in two parts<br>
 </ol>
 
 #### Training for output unit weights
-<img src="/assets/images/eq7.jpg" width="70%" height="70%">
+<center>
+<img src="{{site.baseurl}}/assets/images/eq7.jpg" width="50%" height="50%">
+</center>
 
 As you can see that netj can affect the network through the oj we have again incorporated that part. But surprisingly the error is a function of oj and oj, on the other hand can be written as a function of netj (sigmoid dependency).<br>
 We call the whole expression as -𝛿j and our updation rule is 
@@ -197,7 +216,9 @@ wi,j = wi,j + Δwi,j
 </center>
 
 #### Training for hidden unit weights
-<img src="/assets/images/eq8.jpg" width="70%" height="70%">
+<center>
+<img src="{{site.baseurl}}/assets/images/eq8.jpg" width="50%" height="50%">
+</center>
 
 In case of hidden units, wi,j can affect the whole network through netj that we already learnt but as this is a hidden unit the error will be propagated to all those nodes in the next layer that are connected to this node via some link wj,k. Thus we try to take into account those links as well. We represent all those links by downstream. The next layer nodes netk will be affected by the netj via oj thus we have taken that into our chain rule.<br>
 Rearranging the term we get the updation rule as for the hidden unit<br>
